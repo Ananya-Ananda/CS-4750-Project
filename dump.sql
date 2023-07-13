@@ -2,20 +2,21 @@
 BEGIN;
 CREATE TABLE SPONSOR
 (
-Sponsor_ID INTEGER NOT NULL ,
+Sponsor_ID INTEGER NOT NULL AUTO_INCREMENT,
 Sponsor_Company VARCHAR(50) NULL ,
 Sponsor_First VARCHAR(50) NULL ,
 Sponsor_Last VARCHAR(50) NULL ,
 Sponsor_Email VARCHAR(100) NULL ,
  CONSTRAINT XPKSPONSOR PRIMARY KEY  ( Sponsor_ID ASC )
 );
-INSERT INTO SPONSOR VALUES(1,'Capital One','Maris','Rice','mrice@capitalone.com');
-INSERT INTO SPONSOR VALUES(2,'University of Virginia','Sierra','Ferguson','sferguson@uva.edu');
-INSERT INTO SPONSOR VALUES(3,'bti 360','Anna','Mills','amills@bti.com');
-INSERT INTO SPONSOR VALUES(4,'Booz Allen','Brianna','Fox','bfox@boozallen.com');
-INSERT INTO SPONSOR VALUES(5,'TecHacks','Tiffany','Black','tblack@techacks.com');
-INSERT INTO SPONSOR VALUES(6,'Applan','Paige','Schmidt','pschmidt@applan.com');
-INSERT INTO SPONSOR VALUES(7,'ting','Vanessa','Rose','vrose@ting.com');
+INSERT INTO SPONSOR (Sponsor_Company, Sponsor_First, Sponsor_Last, Sponsor_Email) VALUES('Capital One','Maris','Rice','mrice@capitalone.com');
+INSERT INTO SPONSOR (Sponsor_Company, Sponsor_First, Sponsor_Last, Sponsor_Email) VALUES('University of Virginia','Sierra','Ferguson','sferguson@uva.edu');
+INSERT INTO SPONSOR (Sponsor_Company, Sponsor_First, Sponsor_Last, Sponsor_Email) VALUES('bti 360','Anna','Mills','amills@bti.com');
+INSERT INTO SPONSOR (Sponsor_Company, Sponsor_First, Sponsor_Last, Sponsor_Email) VALUES('Booz Allen','Brianna','Fox','bfox@boozallen.com');
+INSERT INTO SPONSOR (Sponsor_Company, Sponsor_First, Sponsor_Last, Sponsor_Email) VALUES('TecHacks','Tiffany','Black','tblack@techacks.com');
+INSERT INTO SPONSOR (Sponsor_Company, Sponsor_First, Sponsor_Last, Sponsor_Email) VALUES('Applan','Paige','Schmidt','pschmidt@applan.com');
+INSERT INTO SPONSOR (Sponsor_Company, Sponsor_First, Sponsor_Last, Sponsor_Email) VALUES('ting','Vanessa','Rose','vrose@ting.com');
+
 CREATE TABLE EVENT
 (
 Event_ID INTEGER NOT NULL ,
@@ -36,6 +37,7 @@ INSERT INTO EVENT VALUES(4,'resume speed run','Saturday, October 15','Rice 032',
 INSERT INTO EVENT VALUES(5,'Game development using unity','Saturday, October 15','Rice 032',7,'Workshop','4pm','Game Development Using Unity');
 INSERT INTO EVENT VALUES(6,'Sponsor network','Saturday, October 15','Rice 032',1,'Network','5pm','Sponsor Networking Event');
 INSERT INTO EVENT VALUES(7,'podcast','Saturday, October 15','Rice 032',7,'Social','8:30pm','Late Night Podcast');
+
 CREATE TABLE WORKSHOP
 (
 Event_ID INTEGER NOT NULL ,
@@ -49,6 +51,7 @@ INSERT INTO WORKSHOP VALUES(2,'Jessica','Miller','jessicamiller@uva.edu');
 INSERT INTO WORKSHOP VALUES(3,'Jessica','Miller','jessicamiller@uva.edu');
 INSERT INTO WORKSHOP VALUES(4,'David','Harris','dharris@techacks.com');
 INSERT INTO WORKSHOP VALUES(5,'Amanda','Baker','amandabaker@gmail.com');
+
 CREATE TABLE NETWORK
 (
 Event_ID INTEGER NOT NULL ,
@@ -58,6 +61,7 @@ Recruiter_Last VARCHAR(50) NULL ,
 CONSTRAINT R_18 FOREIGN KEY (Event_ID) REFERENCES EVENT (Event_ID)
 );
 INSERT INTO NETWORK VALUES(6,'Iris','Smith');
+
 CREATE TABLE SOCIAL
 (
 Event_ID INTEGER NOT NULL ,
@@ -66,6 +70,7 @@ Material_Description VARCHAR(2000) NULL ,
 CONSTRAINT R_19 FOREIGN KEY (Event_ID) REFERENCES EVENT (Event_ID)
 );
 INSERT INTO SOCIAL VALUES(7,'N/A');
+
 CREATE TABLE COLLEGE
 (
 College_ID INTEGER NOT NULL ,
@@ -77,9 +82,10 @@ INSERT INTO COLLEGE VALUES(2,'College of William and Mary');
 INSERT INTO COLLEGE VALUES(3,'Virginia Tech');
 INSERT INTO COLLEGE VALUES(4,'George Mason University');
 INSERT INTO COLLEGE VALUES(5,'James Madison University');
+
 CREATE TABLE PARTICIPANT
 (
-Participant_ID INTEGER NOT NULL ,
+Participant_ID INT NOT NULL AUTO_INCREMENT,
 Participant_First VARCHAR(50) NULL ,
 Participant_Last VARCHAR(50) NULL ,
 Participant_Year INTEGER NULL ,
@@ -88,23 +94,26 @@ College_ID INTEGER NULL ,
  CONSTRAINT XPKPARTICIPANT PRIMARY KEY  ( Participant_ID ASC ),
 CONSTRAINT R_15 FOREIGN KEY (College_ID) REFERENCES COLLEGE (College_ID)
 );
-INSERT INTO PARTICIPANT VALUES(1,'Olivia','Smith',4,'osmith@uva.edu',1);
-INSERT INTO PARTICIPANT VALUES(2,'Emma','Fisher',2,'efisher@uva.edu',1);
-INSERT INTO PARTICIPANT VALUES(3,'Amelia','Barnes',1,'aBarnes@wm.edu',2);
-INSERT INTO PARTICIPANT VALUES(4,'Charlotte','Perry',4,'cPerry@uva.edu',1);
-INSERT INTO PARTICIPANT VALUES(5,'Ava','Powell',3,'cpowell@uva.edu',1);
-INSERT INTO PARTICIPANT VALUES(6,'Sophia','Sullivan',4,'ssullivan@uva.edu',1);
-INSERT INTO PARTICIPANT VALUES(7,'Isabella','Ross',2,'iross@wm.edu',2);
-INSERT INTO PARTICIPANT VALUES(8,'Mia','Foster',1,'mfoster@uva.edu',1);
-INSERT INTO PARTICIPANT VALUES(9,'Luna','Long',2,'llong@uva.edu',1);
-INSERT INTO PARTICIPANT VALUES(10,'Lily','Myers',4,'lmyers@uva.edu',1);
-INSERT INTO PARTICIPANT VALUES(11,'Harper','Jenkins',4,'hjenkins@jmu.edu',5);
-INSERT INTO PARTICIPANT VALUES(12,'Gianna','Reed',2,'greed@uva.edu',1);
-INSERT INTO PARTICIPANT VALUES(13,'Evelyn','Rogers',4,'erogers@uva.edu',1);
-INSERT INTO PARTICIPANT VALUES(14,'Aurora','Cook',3,'acook@jmu.edu',5);
-INSERT INTO PARTICIPANT VALUES(15,'Violet','Morris',4,'vmorris@uva.edu',1);
-INSERT INTO PARTICIPANT VALUES(16,'Ellie','Chen',4,'echen@uva.edu',1);
-INSERT INTO PARTICIPANT VALUES(17,'Mila','Lee',4,'mlee@uva.edu',1);
+
+
+INSERT INTO PARTICIPANT (Participant_First, Participant_Last, Participant_Year, Participant_Email, College_ID) VALUES('Olivia','Smith',4,'osmith@uva.edu',1);
+INSERT INTO PARTICIPANT (Participant_First, Participant_Last, Participant_Year, Participant_Email, College_ID) VALUES('Emma','Fisher',2,'efisher@uva.edu',1);
+INSERT INTO PARTICIPANT (Participant_First, Participant_Last, Participant_Year, Participant_Email, College_ID) VALUES('Amelia','Barnes',1,'aBarnes@wm.edu',2);
+INSERT INTO PARTICIPANT (Participant_First, Participant_Last, Participant_Year, Participant_Email, College_ID) VALUES('Charlotte','Perry',4,'cPerry@uva.edu',1);
+INSERT INTO PARTICIPANT (Participant_First, Participant_Last, Participant_Year, Participant_Email, College_ID) VALUES('Ava','Powell',3,'cpowell@uva.edu',1);
+INSERT INTO PARTICIPANT (Participant_First, Participant_Last, Participant_Year, Participant_Email, College_ID) VALUES('Sophia','Sullivan',4,'ssullivan@uva.edu',1);
+INSERT INTO PARTICIPANT (Participant_First, Participant_Last, Participant_Year, Participant_Email, College_ID) VALUES('Isabella','Ross',2,'iross@wm.edu',2);
+INSERT INTO PARTICIPANT (Participant_First, Participant_Last, Participant_Year, Participant_Email, College_ID) VALUES('Mia','Foster',1,'mfoster@uva.edu',1);
+INSERT INTO PARTICIPANT (Participant_First, Participant_Last, Participant_Year, Participant_Email, College_ID) VALUES('Luna','Long',2,'llong@uva.edu',1);
+INSERT INTO PARTICIPANT (Participant_First, Participant_Last, Participant_Year, Participant_Email, College_ID) VALUES('Lily','Myers',4,'lmyers@uva.edu',1);
+INSERT INTO PARTICIPANT (Participant_First, Participant_Last, Participant_Year, Participant_Email, College_ID) VALUES('Harper','Jenkins',4,'hjenkins@jmu.edu',5);
+INSERT INTO PARTICIPANT (Participant_First, Participant_Last, Participant_Year, Participant_Email, College_ID) VALUES('Gianna','Reed',2,'greed@uva.edu',1);
+INSERT INTO PARTICIPANT (Participant_First, Participant_Last, Participant_Year, Participant_Email, College_ID) VALUES('Evelyn','Rogers',4,'erogers@uva.edu',1);
+INSERT INTO PARTICIPANT (Participant_First, Participant_Last, Participant_Year, Participant_Email, College_ID) VALUES('Aurora','Cook',3,'acook@jmu.edu',5);
+INSERT INTO PARTICIPANT (Participant_First, Participant_Last, Participant_Year, Participant_Email, College_ID) VALUES('Violet','Morris',4,'vmorris@uva.edu',1);
+INSERT INTO PARTICIPANT (Participant_First, Participant_Last, Participant_Year, Participant_Email, College_ID) VALUES('Ellie','Chen',4,'echen@uva.edu',1);
+INSERT INTO PARTICIPANT (Participant_First, Participant_Last, Participant_Year, Participant_Email, College_ID) VALUES('Mila','Lee',4,'mlee@uva.edu',1);
+
 CREATE TABLE PARTICIPANT_EVENT
 (
 Participant_ID INTEGER NOT NULL ,
@@ -177,23 +186,25 @@ INSERT INTO PARTICIPANT_EVENT VALUES(4,7);
 INSERT INTO PARTICIPANT_EVENT VALUES(5,7);
 INSERT INTO PARTICIPANT_EVENT VALUES(6,7);
 INSERT INTO PARTICIPANT_EVENT VALUES(10,7);
+
 CREATE TABLE ORGANIZER
 (
-Organizer_ID INTEGER NOT NULL ,
+Organizer_ID INTEGER NOT NULL AUTO_INCREMENT,
 Organizer_First VARCHAR(50) NULL ,
 Organizer_Last VARCHAR(50) NULL ,
 Organizer_Year INTEGER NULL ,
 Organizer_Email VARCHAR(100) NULL ,
  CONSTRAINT XPKORGANIZER PRIMARY KEY  ( Organizer_ID ASC )
 );
-INSERT INTO ORGANIZER VALUES(1,'Mary','Brown',4,'mbrown@xyz.com');
-INSERT INTO ORGANIZER VALUES(2,'Patricia','Taylor',3,'ptaylor@xyz.com');
-INSERT INTO ORGANIZER VALUES(3,'Linda','Moore',4,'lmoore@xyz.com');
-INSERT INTO ORGANIZER VALUES(4,'Jennifer','Jackson',2,'jjackson@xyz.com');
-INSERT INTO ORGANIZER VALUES(5,'Thomas','Lee',3,'tlee@xyz.com');
-INSERT INTO ORGANIZER VALUES(6,'Mark','Wilson',4,'mwilson@xyz.com');
-INSERT INTO ORGANIZER VALUES(7,'Joseph','Park',2,'jpark@xyz.com');
-INSERT INTO ORGANIZER VALUES(8,'Betty','Martin',4,'bmartin@xyz.com');
+INSERT INTO ORGANIZER (Organizer_First, Organizer_Last, Organizer_Year, Organizer_Email) VALUES('Mary','Brown',4,'mbrown@xyz.com');
+INSERT INTO ORGANIZER (Organizer_First, Organizer_Last, Organizer_Year, Organizer_Email) VALUES('Patricia','Taylor',3,'ptaylor@xyz.com');
+INSERT INTO ORGANIZER (Organizer_First, Organizer_Last, Organizer_Year, Organizer_Email) VALUES('Linda','Moore',4,'lmoore@xyz.com');
+INSERT INTO ORGANIZER (Organizer_First, Organizer_Last, Organizer_Year, Organizer_Email) VALUES('Jennifer','Jackson',2,'jjackson@xyz.com');
+INSERT INTO ORGANIZER (Organizer_First, Organizer_Last, Organizer_Year, Organizer_Email) VALUES('Thomas','Lee',3,'tlee@xyz.com');
+INSERT INTO ORGANIZER (Organizer_First, Organizer_Last, Organizer_Year, Organizer_Email) VALUES('Mark','Wilson',4,'mwilson@xyz.com');
+INSERT INTO ORGANIZER (Organizer_First, Organizer_Last, Organizer_Year, Organizer_Email) VALUES('Joseph','Park',2,'jpark@xyz.com');
+INSERT INTO ORGANIZER (Organizer_First, Organizer_Last, Organizer_Year, Organizer_Email) VALUES('Betty','Martin',4,'bmartin@xyz.com');
+
 CREATE TABLE ORG_EVENT
 (
 Organizer_ID INTEGER NOT NULL ,
@@ -211,25 +222,26 @@ INSERT INTO ORG_EVENT VALUES(5,5);
 INSERT INTO ORG_EVENT VALUES(6,6);
 INSERT INTO ORG_EVENT VALUES(7,7);
 INSERT INTO ORG_EVENT VALUES(8,7);
+
 CREATE TABLE VOLUNTEER
 (
-Volunteer_ID INTEGER NOT NULL ,
+Volunteer_ID INTEGER NOT NULL AUTO_INCREMENT,
 Volunteer_First VARCHAR(50) NULL ,
 Volunteer_Last VARCHAR(50) NULL ,
 Volunteer_Year INTEGER NULL ,
 Volunteer_Email CHAR(18) NULL ,
  CONSTRAINT XPKVOLUNTEER PRIMARY KEY  ( Volunteer_ID ASC )
 );
-INSERT INTO VOLUNTEER VALUES(1,'Emily','Davis',2,'emilyd@uva.edu');
-INSERT INTO VOLUNTEER VALUES(2,'Ashley','Walker',2,'ashleyw@uva.edu');
-INSERT INTO VOLUNTEER VALUES(3,'Alexis','Young',1,'alexisy@uva.edu');
-INSERT INTO VOLUNTEER VALUES(4,'Sarah','Allen',4,'saraha@uva.edu');
-INSERT INTO VOLUNTEER VALUES(5,'Isabella','Powell',3,'isabellap@uva.edu');
-INSERT INTO VOLUNTEER VALUES(6,'Hannah','King',4,'hannahk@uva.edu');
-INSERT INTO VOLUNTEER VALUES(7,'Kaylee','Harris',2,'kayleeh@uva.edu');
-INSERT INTO VOLUNTEER VALUES(8,'Brooke','Robinson',1,'brooker@uva.edu');
-INSERT INTO VOLUNTEER VALUES(9,'Megan','Lee',2,'meganl@uva.edu');
-INSERT INTO VOLUNTEER VALUES(10,'Haley','Myers',4,'haleym@uva.edu');
+INSERT INTO VOLUNTEER (Volunteer_First, Volunteer_Last, Volunteer_Year, Volunteer_Email) VALUES('Emily','Davis',2,'emilyd@uva.edu');
+INSERT INTO VOLUNTEER (Volunteer_First, Volunteer_Last, Volunteer_Year, Volunteer_Email) VALUES('Ashley','Walker',2,'ashleyw@uva.edu');
+INSERT INTO VOLUNTEER (Volunteer_First, Volunteer_Last, Volunteer_Year, Volunteer_Email) VALUES('Alexis','Young',1,'alexisy@uva.edu');
+INSERT INTO VOLUNTEER (Volunteer_First, Volunteer_Last, Volunteer_Year, Volunteer_Email) VALUES('Sarah','Allen',4,'saraha@uva.edu');
+INSERT INTO VOLUNTEER (Volunteer_First, Volunteer_Last, Volunteer_Year, Volunteer_Email) VALUES('Isabella','Powell',3,'isabellap@uva.edu');
+INSERT INTO VOLUNTEER (Volunteer_First, Volunteer_Last, Volunteer_Year, Volunteer_Email) VALUES('Hannah','King',4,'hannahk@uva.edu');
+INSERT INTO VOLUNTEER (Volunteer_First, Volunteer_Last, Volunteer_Year, Volunteer_Email) VALUES('Kaylee','Harris',2,'kayleeh@uva.edu');
+INSERT INTO VOLUNTEER (Volunteer_First, Volunteer_Last, Volunteer_Year, Volunteer_Email) VALUES('Brooke','Robinson',1,'brooker@uva.edu');
+INSERT INTO VOLUNTEER (Volunteer_First, Volunteer_Last, Volunteer_Year, Volunteer_Email) VALUES('Megan','Lee',2,'meganl@uva.edu');
+INSERT INTO VOLUNTEER (Volunteer_First, Volunteer_Last, Volunteer_Year, Volunteer_Email) VALUES('Haley','Myers',4,'haleym@uva.edu');
 CREATE TABLE VOLUNTEER_EVENT
 (
 Volunteer_ID INTEGER NOT NULL ,
